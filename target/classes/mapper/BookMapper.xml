@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.yigumoyan.mapper.BooksMapper">
+    <insert id="insertBook" parameterType="top.yigumoyan.pojo.Books">
+        insert into books(bookName, bookCounts, detail)
+        values (#{bookName}, #{bookCounts}, #{detail});
+    </insert>
+    <delete id="deleteBook" parameterType="int">
+        delete
+        from books
+        where bookID = #{id};
+    </delete>
+    <update id="updateBook" parameterType="top.yigumoyan.pojo.Books">
+        update books
+        set bookName   = #{bookName},
+            bookCounts = #{bookCounts},
+            detail     = #{detail}
+        where bookID = #{id};
+    </update>
+    <select id="selectBook" parameterType="int" resultType="top.yigumoyan.pojo.Books">
+        select *
+        from books
+        where bookID = #{id};
+    </select>
+    <select id="selectAllBooks" resultType="top.yigumoyan.pojo.Books">
+        select *
+        from books;
+    </select>
+</mapper>
